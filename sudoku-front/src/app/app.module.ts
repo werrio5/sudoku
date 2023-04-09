@@ -8,6 +8,13 @@ import { FieldContainerComponent } from './components/field-container/field-cont
 import { FieldComponent } from './components/field-container/field/field.component';
 import { CellComponent } from './components/field-container/field/cell/cell.component';
 import { CellGroupComponent } from './components/field-container/field/cell-group/cell-group.component';
+import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from "@angular/common/http";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -16,11 +23,18 @@ import { CellGroupComponent } from './components/field-container/field/cell-grou
     FieldContainerComponent,
     FieldComponent,
     CellComponent,
-    CellGroupComponent
+    CellGroupComponent,
+    ControlPanelComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

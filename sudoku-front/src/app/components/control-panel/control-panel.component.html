@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button
+            aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Sudoku</span>
+    <button mat-button
+            [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item
+      (click)="generate('generator')">Generator</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
