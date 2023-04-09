@@ -32,15 +32,14 @@ def _emptyGrid(size: int):
 #A function to check if the grid is full
 def checkGrid(grid: list):
   for row in range(0, len(grid)):
-    if lineContainsNumber(row, 0): return False
+    if lineContainsNumber(grid[row], 0): return False
   #We have a complete grid!  
   return True 
 
 #A backtracking/recursive function to check all possible combinations of numbers until a solution is found
-def solveGrid(grid: list):
-  global counter
+def solveGrid(grid: list, counter = [0]):
   size = len(grid)  
-  numberList = [range(1, size + 1)]
+  numberList = [*range(1, size + 1)]
   #Find next empty cell
   for i in range(0, size ** 2):
     row = i // size
@@ -50,16 +49,17 @@ def solveGrid(grid: list):
         if not (
           lineContainsNumber(grid[row], value) or
           columnContainsNumber(grid, col, value) or 
-          squareContainsNumber(grid, row, col)
+          squareContainsNumber(grid, row, col, value)
         ):
           grid[row][col] = value
           if checkGrid(grid):
-            counter += 1
+            counter[0] += 1
             break
           else:
-            if solveGrid(grid):
+            if solveGrid(grid, counter):
               return True
       break
+  grid[row][col] = 0
 
 #shuffle(numberList)
 
@@ -67,24 +67,25 @@ def solveGrid(grid: list):
 def fillGrid(grid: list):
   global counter
   size = len(grid)
-  numberList = [range(1, size + 1)]
+  numberList = [*range(1, size + 1)]
   #Find next empty cell
   for i in range(0, size ** 2):
-    row=i // size
-    col=i % size
+    row = i // size
+    col = i % size
     if grid[row][col] == 0:
       shuffle(numberList)      
       for value in numberList:
         if not (
           lineContainsNumber(grid[row], value) or
           columnContainsNumber(grid, col, value) or 
-          squareContainsNumber(grid, row, col)
+          squareContainsNumber(grid, row, col, value)
         ):
           grid[row][col] = value
           if checkGrid(grid): return True
           else: 
             if fillGrid(grid): return True
       break   
+  grid[row][col] = 0
 
 def lineContainsNumber(line: list, number: int):
   return number in line
@@ -94,8 +95,7 @@ def columnContainsNumber(grid: list, column: int, number: int):
     if row[column] == number: return True
   return False
 
-def squareContainsNumber(grid: list, num_i: int, num_j: int):
-  number = grid[num_i][num_j]
+def squareContainsNumber(grid: list, num_i: int, num_j: int, number: int):
   squares_count = int(sqrt(len(grid)))
   square_i = num_i // squares_count
   square_j = num_j // squares_count
@@ -112,7 +112,7 @@ def reduce(grid: list):
   attempts = 5 
   counter = 1
   size = len(grid)
-  numberList = [range(0, size)]
+  numberList = [*range(0, size)]
   while attempts > 0:
     #Select a random cell that is not already empty
     row = randint(0, size - 1)
@@ -132,10 +132,10 @@ def reduce(grid: list):
           copyGrid[r].append(grid[r][c])
     
     #Count the number of solutions that this grid has (using a backtracking approach implemented in the solveGrid() function)
-    counter = 0      
-    solveGrid(copyGrid)   
+    counter = [0]      
+    solveGrid(copyGrid, counter)   
     #If the number of solution is different from 1 then we need to cancel the change by putting the value we took away back in the grid
-    if counter != 1:
+    if counter[0] != 1:
       grid[row][col] = backup
       #We could stop here, but we can also have another attempt with a different cell just to try to remove more numbers
       attempts -= 1
