@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,9 @@ export class RestService {
     };
     return this.httpClient
       .request(reqType, url, options)
-      .pipe(response => {
+      .pipe(map(response => {
         return this.mapResponse(response);
-      });
+      }));
   }
 
   private mapResponse(response: any) {
