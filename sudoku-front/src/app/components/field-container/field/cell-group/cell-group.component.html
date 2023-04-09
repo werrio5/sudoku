@@ -1,10 +1,9 @@
-<p>cell-group works!</p>
 <div class="cell-container">
   <div class="row"
-       *ngFor="let i of [1, 2, 3]">
-    <div class="cell-group"
-         *ngFor="let i of [1, 2, 3]">
-      <app-cell></app-cell>
+       *ngFor="let i of [0, 1, 2]">
+    <div class="cell"
+         *ngFor="let j of [0, 1, 2]">
+      <app-cell [row]="i + getGroupRowOffset()" [col]="j + getGroupColOffset()"></app-cell>
     </div>
   </div>
 </div>

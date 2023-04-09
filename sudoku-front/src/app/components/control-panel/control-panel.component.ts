@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RestService} from "../../services/rest.service";
 import {GeneratorService} from "../../services/generator.service";
+import {GameService} from "../../services/game.service";
 
 @Component({
   selector: 'app-control-panel',
@@ -9,10 +10,10 @@ import {GeneratorService} from "../../services/generator.service";
 })
 export class ControlPanelComponent {
 
-  constructor(private generator: GeneratorService) {
+  constructor(private game: GameService) {
   }
 
   public generate(source: string) : void {
-    this.generator.generate("generator")
+    this.game.newGame("generator");
   }
 }

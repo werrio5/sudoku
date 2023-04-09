@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {GameService} from "../../../../services/game.service";
 
 @Component({
   selector: 'app-cell-group',
@@ -7,4 +8,21 @@ import { Component } from '@angular/core';
 })
 export class CellGroupComponent {
 
+  @Input() row!: number;
+  @Input() col!: number;
+
+  constructor(
+    private game: GameService
+  ) {
+  }
+
+  public getGroupRowOffset(): number{
+    let groupSize = this.game.getField()?.getGroupSize();
+    return groupSize == undefined ? 0 : groupSize * this.row;
+  }
+
+  public getGroupColOffset(): number {
+    let groupSize = this.game.getField()?.getGroupSize();
+    return groupSize == undefined ? 0 : groupSize * this.col;
+  }
 }

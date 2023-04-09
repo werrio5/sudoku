@@ -1,12 +1,18 @@
+import {Point} from "@angular/cdk/drag-drop";
+
 export class Field {
 
-  private size: number;
+  private readonly size: number;
+  private readonly groupSize: number;
   private nums: number[][];
+  private selectedRow: number = -1;
+  private selectedColumn: number = -1;
 
   constructor(
     size: number,
   ) {
     this.size = size;
+    this.groupSize = Math.round(Math.sqrt(size));
     this.nums = [];
     this.clear();
   }
@@ -28,5 +34,26 @@ export class Field {
 
   public getCellValue(i: number, j: number): number {
     return this.nums[i][j];
+  }
+
+  public getSize(): number {
+    return this.size;
+  }
+
+  public getGroupSize(): number {
+    return this.groupSize;
+  }
+
+  public selectCell(row: number, column: number): void {
+    this.selectedRow = row;
+    this.selectedColumn = column
+  }
+
+  public getSelectedRow(): number {
+    return this.selectedRow;
+  }
+
+  public getSelectedColumn(): number {
+    return this.selectedColumn;
   }
 }

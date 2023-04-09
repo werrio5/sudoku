@@ -1,0 +1,29 @@
+.cell {
+  min-height: 50px;
+  min-width: 50px;
+  background-color: lightgray;
+  opacity: 25%;
+}
+
+.selected {
+  opacity: 30%;
+  background-color: darkmagenta;
+}
+
+.cell:hover {
+  opacity: 50%;
+}
+
+.sameArea {
+  opacity: 15%;
+  background-color: darkmagenta;
+}
+
+.sameArea:hover {
+  opacity: 30%;
+}
+
+.value {
+  font-size: 1em;
+  /*opacity: 100%;*/
+}

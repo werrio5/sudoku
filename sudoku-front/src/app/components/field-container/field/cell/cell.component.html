@@ -1,1 +1,8 @@
-<p>cell works!</p>
+<div class="cell"
+     [ngClass]="{selected: isSelected(), sameArea: isSameArea()}"
+     (click)="select()">
+  <div class="value">
+    {{getCellValue()}}
+  </div>
+</div>
+

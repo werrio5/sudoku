@@ -1,10 +1,10 @@
 <p>field works!</p>
 <div class="cell-container">
   <div class="row"
-       *ngFor="let i of [1, 2, 3]">
+       *ngFor="let i of [0, 1, 2]">
     <div class="cell-group"
-         *ngFor="let i of [1, 2, 3]">
-      <app-cell-group></app-cell-group>
+         *ngFor="let j of [0, 1, 2]">
+      <app-cell-group [row]="i" [col]="j"></app-cell-group>
     </div>
   </div>
 </div>
