@@ -15,6 +15,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
+import { InputComponent } from './components/field-container/input/input.component';
+import { DigitComponent } from './components/field-container/input/digit/digit.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import {MatMenuModule} from "@angular/material/menu";
     CellComponent,
     CellGroupComponent,
     ControlPanelComponent,
+    InputComponent,
+    DigitComponent,
   ],
   imports: [
     BrowserModule,

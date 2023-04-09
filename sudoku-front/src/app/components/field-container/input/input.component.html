@@ -1,0 +1,18 @@
+<p>input works!</p>
+{{getGameTime() | date : "hh:mm:ss"}}
+<div class="row" *ngFor="let i of [0, 3, 6]">
+  <div class="button" *ngFor="let j of [1, 2, 3]">
+    <app-digit [value] = "i + j"></app-digit>
+  </div>
+</div>
+<div class="row">
+  <div class="button">
+    <app-digit [value]="'delete'"></app-digit>
+  </div>
+  <div class="button">
+    <app-digit [value]="'hint'"></app-digit>
+  </div>
+  <div class="button">
+    <app-digit [value]="'undo'"></app-digit>
+  </div>
+</div>

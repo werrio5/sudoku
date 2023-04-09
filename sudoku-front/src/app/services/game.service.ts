@@ -38,4 +38,8 @@ export class GameService {
   public getField(): Field | undefined {
     return this.field;
   }
+
+  public getStartDate(): Date {
+    return this.startDate;
+  }
 }

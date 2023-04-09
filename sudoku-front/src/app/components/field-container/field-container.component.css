@@ -1,6 +1,15 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
 .field {
   display: flex;
   flex-direction: row;
   border: 1px solid black;
   height: 100%;
+}
+
+.input {
+  border: 1px solid black;
 }
