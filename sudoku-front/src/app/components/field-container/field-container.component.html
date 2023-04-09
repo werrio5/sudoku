@@ -1,5 +1,4 @@
-<p>field-container works!</p>
-<div class="row">
+<div class="row" [class.disabled]="!isGameInProgress()">
   <div class="field">
     <app-field></app-field>
   </div>

@@ -14,6 +14,6 @@ export class ControlPanelComponent {
   }
 
   public generate(source: string) : void {
-    this.game.newGame("generator");
+    this.game.newGame(source);
   }
 }

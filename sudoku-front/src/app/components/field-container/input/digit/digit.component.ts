@@ -7,5 +7,13 @@ import {Component, Input} from '@angular/core';
 })
 export class DigitComponent {
 
-  @Input() value!: number | string;
+  @Input() value!: number | string
+  @Input() func!: (value: number | string) => void;
+
+  constructor() {
+  }
+
+  public onClick(): void {
+    this.func(this.value);
+  }
 }

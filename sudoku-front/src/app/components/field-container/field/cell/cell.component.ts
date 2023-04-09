@@ -47,4 +47,8 @@ export class CellComponent {
     return Math.floor(field.getSelectedRow() / field.getGroupSize()) == Math.floor(this.row / field.getGroupSize())
       && Math.floor(field.getSelectedColumn() / field.getGroupSize()) == Math.floor(this.col / field.getGroupSize());
   }
+
+  public isUserInput(): boolean {
+    return !this.game.getField()?.isDigitInitial(this.row, this.col);
+  }
 }

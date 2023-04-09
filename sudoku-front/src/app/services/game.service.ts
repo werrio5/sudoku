@@ -8,7 +8,7 @@ import {GeneratorService} from "./generator.service";
 })
 export class GameService {
 
-  private startDate!: Date;
+  private startDate!: number;
   private endDate!: Date | undefined;
   private state: GameState = GameState.NOT_STARTED;
   private field!: Field | undefined;
@@ -29,7 +29,7 @@ export class GameService {
       .subscribe(field => {
         this.field = field;
         this.state = GameState.IN_PROGRESS;
-        this.startDate = new Date();
+        this.startDate = Date.now();
         console.debug(field)
         console.debug("game started")
       });
@@ -39,7 +39,29 @@ export class GameService {
     return this.field;
   }
 
-  public getStartDate(): Date {
+  public getStartDate(): number {
     return this.startDate;
+  }
+
+  public putDigit(value: number): void {
+    if (this.field?.isSelectedDigitInitial()) {
+      return;
+    }
+    this.field?.setCellValue(this.field?.getSelectedRow(), this.field?.getSelectedColumn(), value);
+    //todo: check & highlight mistakes
+    //todo: trigger endgame check
+  }
+
+  private validateField(): void {
+
+  }
+
+  private isGameOver(): boolean {
+    return false;
+  }
+
+
+  public getState(): GameState {
+    return this.state;
   }
 }

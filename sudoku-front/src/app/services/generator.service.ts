@@ -15,7 +15,7 @@ export class GeneratorService {
   ) { }
 
   public generate(source: string): Observable<Field> {
-    return this.rest.call("POST", environment.backend_url + "/generate", {"size": 9})
+    return this.rest.call("POST", environment.backend_url + "/" + source, {"size": 9})
       .pipe(map(result => {
         let field = new Field(9);
         field.set(result.grid);

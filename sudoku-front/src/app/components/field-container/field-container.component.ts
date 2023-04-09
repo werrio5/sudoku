@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {GameService} from "../../services/game.service";
+import {GameState} from "../../classes/GameState";
 
 @Component({
   selector: 'app-field-container',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class FieldContainerComponent {
 
+  constructor(private game: GameService) {
+  }
+
+  public isGameInProgress(): boolean {
+    return this.game.getState() == GameState.IN_PROGRESS;
+  }
 }

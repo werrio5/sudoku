@@ -1,13 +1,15 @@
 .cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   min-height: 50px;
   min-width: 50px;
-  background-color: lightgray;
-  opacity: 25%;
+  background-color: rgba(211, 211, 211, 0.25);
 }
 
 .selected {
-  opacity: 30%;
-  background-color: darkmagenta;
+  background-color: rgba(139, 0, 139, 0.3);
 }
 
 .cell:hover {
@@ -15,8 +17,7 @@
 }
 
 .sameArea {
-  opacity: 15%;
-  background-color: darkmagenta;
+  background-color: rgba(139, 0, 139, 0.15);
 }
 
 .sameArea:hover {
@@ -24,6 +25,9 @@
 }
 
 .value {
-  font-size: 1em;
-  /*opacity: 100%;*/
+  font-size: 28px;
+}
+
+.user-input {
+  color: darkmagenta;
 }

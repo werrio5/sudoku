@@ -1,7 +1,7 @@
 <div class="cell"
      [ngClass]="{selected: isSelected(), sameArea: isSameArea()}"
      (click)="select()">
-  <div class="value">
+  <div class="value" [ngClass]="{'user-input': isUserInput()}">
     {{getCellValue()}}
   </div>
 </div>

@@ -1,6 +1,17 @@
 .digit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   min-height: 50px;
   min-width: 50px;
-  background-color: lightgray;
-  opacity: 25%;
+  background-color: rgba(211, 211, 211, 0.25);
+}
+
+.digit:hover {
+  opacity: 50%;
+}
+
+.symbol {
+  font-size: 28px;
 }
