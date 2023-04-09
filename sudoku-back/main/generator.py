@@ -7,6 +7,12 @@ from math import sqrt
 
 default_size = 9
 
+def stub():
+  stub = []
+  for i in range(0, 9):
+    stub.append([*range(1, 10)])
+  return {"grid": stub}
+
 def generate():  
   params = request.json
   return Response(

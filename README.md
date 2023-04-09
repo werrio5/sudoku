@@ -5,9 +5,11 @@ todo:
 1.1 basic game logic
 1.2 game field [50%]
 1.3 some kind of game log
+1.3.1 undo
 1.4 external field sources
 1.5 solvers efficiency overview
 1.6 optional user login
+1.7 add game rules
 
 2. python backend
 2.1 generators

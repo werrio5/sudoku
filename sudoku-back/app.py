@@ -3,7 +3,7 @@ import json
 
 from flask import Flask, Response
 
-from main.generator import generate
+from main.generator import generate, stub
 
 app = Flask(__name__)
 
@@ -16,6 +16,7 @@ def helloworld():
    )
 
 app.add_url_rule('/generate', methods = ['GET', 'POST'], view_func = generate)
+app.add_url_rule('/stub', methods = ['GET', 'POST'], view_func = stub)
 
 if __name__ == '__main__':
     app.run()
