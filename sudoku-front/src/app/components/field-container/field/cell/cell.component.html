@@ -1,7 +1,14 @@
 <div class="cell"
-     [ngClass]="{selected: isSelected(), sameArea: isSameArea()}"
+     [ngClass]="{
+     selected: isSelected(),
+     sameArea: isSameArea(),
+    'same-digit': isSameDigitWithSelected() && !isError()
+     }"
      (click)="select()">
-  <div class="value" [ngClass]="{'user-input': isUserInput()}">
+  <div class="value" [ngClass]="{
+  'user-input': isUserInput() && !isError(),
+  'error': isError(),
+  }">
     {{getCellValue()}}
   </div>
 </div>

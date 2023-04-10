@@ -80,4 +80,65 @@ export class Field {
   public isDigitInitial(row: number, col: number) {
     return this._nums[row][col] > 0;
   }
+
+  public getErrors(): number[][] {
+    let errors = [];
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
+        let filled = this.nums[i][j] > 0;
+        let valid = this.validate(i, j);
+        if (this.nums[i][j] > 0 && !this.validate(i, j)) {
+          errors.push([i, j]);
+        }
+      }
+    }
+    console.debug(errors)
+    return errors;
+  }
+
+  private validate(row: number, col: number) : boolean {
+    let value = this.nums[row][col];
+    let sameAreaDigits = new Set();
+    // row duplicates
+    for (let i = 0; i < this.size; i++) {
+      if (i == col) {
+        continue;
+      }
+      sameAreaDigits.add(this.nums[row][i]);
+    }
+    if (sameAreaDigits.has(value)) {
+      return false;
+    }
+    // column duplicates
+    for (let i = 0; i < this.size; i++) {
+      if (i == row) {
+        continue;
+      }
+      sameAreaDigits.add(this.nums[i][col]);
+    }
+    if (sameAreaDigits.has(value)) {
+      return false;
+    }
+    // same square digits
+    let squareRowOffset = Math.floor(row / this.groupSize) * this.groupSize;
+    let squareColOffset = Math.floor(col / this.groupSize) * this.groupSize;
+    for (let i = squareRowOffset; i < squareRowOffset + this.groupSize; i++) {
+      for (let j = squareColOffset; j < squareColOffset + this.groupSize; j++) {
+        if (i == row && j == col) {
+          continue;
+        }
+        sameAreaDigits.add(this.nums[i][j]);
+      }
+    }
+    return !sameAreaDigits.has(value);
+  }
+
+  public isSameDigitAsSelected(row: number, col: number): boolean {
+    if (!(this.selectedRow >= 0)) {
+      return false;
+    }
+    return this.nums[row][col] == this.nums[this.selectedRow][this.selectedColumn]
+      && (row != this.selectedRow || col != this.selectedColumn);
+  }
+
 }

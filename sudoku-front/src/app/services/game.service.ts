@@ -12,6 +12,7 @@ export class GameService {
   private endDate!: Date | undefined;
   private state: GameState = GameState.NOT_STARTED;
   private field!: Field | undefined;
+  private errors: number[][] = [];
 
   constructor(
     private generator: GeneratorService
@@ -48,18 +49,19 @@ export class GameService {
       return;
     }
     this.field?.setCellValue(this.field?.getSelectedRow(), this.field?.getSelectedColumn(), value);
-    //todo: check & highlight mistakes
+    this.errors = (this.field as Field).getErrors();
+    console.debug("errors")
+    console.debug(this.errors)
     //todo: trigger endgame check
-  }
-
-  private validateField(): void {
-
   }
 
   private isGameOver(): boolean {
     return false;
   }
 
+  public getErrors(): number[][] {
+    return this.errors;
+  }
 
   public getState(): GameState {
     return this.state;

@@ -31,3 +31,11 @@
 .user-input {
   color: darkmagenta;
 }
+
+.error {
+  color: red;
+}
+
+.same-digit {
+  background-color: rgba(139, 0, 139, 0.25);
+}

@@ -51,4 +51,13 @@ export class CellComponent {
   public isUserInput(): boolean {
     return !this.game.getField()?.isDigitInitial(this.row, this.col);
   }
+
+  public isError(): boolean {
+    return this.game.getErrors()
+      .find(record => record[0] == this.row && record[1] == this.col) != undefined;
+  }
+
+  public isSameDigitWithSelected(): boolean {
+    return this.game.getField()?.isSameDigitAsSelected(this.row, this.col) == true;
+  }
 }
