@@ -9,7 +9,7 @@ import {GeneratorService} from "./generator.service";
 export class GameService {
 
   private startDate!: number;
-  private endDate!: Date | undefined;
+  private endDate!: number;
   private state: GameState = GameState.NOT_STARTED;
   private field!: Field | undefined;
   private errors: number[][] = [];
@@ -25,7 +25,7 @@ export class GameService {
         return;
       }
     }
-    this.endDate = undefined;
+    this.endDate = 0;
     this.generator.generate(source)
       .subscribe(field => {
         this.field = field;
@@ -50,13 +50,14 @@ export class GameService {
     }
     this.field?.setCellValue(this.field?.getSelectedRow(), this.field?.getSelectedColumn(), value);
     this.errors = (this.field as Field).getErrors();
-    console.debug("errors")
-    console.debug(this.errors)
-    //todo: trigger endgame check
+    if(this.isGameOver()) {
+      this.endDate = Date.now();
+      this.state = GameState.IS_OVER;
+    }
   }
 
   private isGameOver(): boolean {
-    return false;
+    return this.errors.length == 0 && this.field?.isFull() == true;
   }
 
   public getErrors(): number[][] {

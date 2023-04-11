@@ -10,16 +10,22 @@ import {map} from "rxjs/operators";
 })
 export class GeneratorService {
 
+  private params = {"size": 9};
+
   constructor(
     private rest: RestService
   ) { }
 
   public generate(source: string): Observable<Field> {
-    return this.rest.call("POST", environment.backend_url + "/" + source, {"size": 9})
+    return this.rest.call("POST", environment.backend_url + "/" + source, this.params)
       .pipe(map(result => {
-        let field = new Field(9);
+        let field = new Field(this.params["size"]);
         field.set(result.grid);
         return field;
       }));
+  }
+
+  public getParams(): any {
+    return this.params;
   }
 }

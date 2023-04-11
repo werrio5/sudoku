@@ -85,9 +85,7 @@ export class Field {
     let errors = [];
     for (let i = 0; i < this.size; i++) {
       for (let j = 0; j < this.size; j++) {
-        let filled = this.nums[i][j] > 0;
-        let valid = this.validate(i, j);
-        if (this.nums[i][j] > 0 && !this.validate(i, j)) {
+        if (this.nums[i][j] > 0 && !this.validate(i, j) && !this.isDigitInitial(i, j)) {
           errors.push([i, j]);
         }
       }
@@ -137,8 +135,19 @@ export class Field {
     if (!(this.selectedRow >= 0)) {
       return false;
     }
-    return this.nums[row][col] == this.nums[this.selectedRow][this.selectedColumn]
+    return this.nums[row][col] > 0
+      && this.nums[row][col] == this.nums[this.selectedRow][this.selectedColumn]
       && (row != this.selectedRow || col != this.selectedColumn);
   }
 
+  public isFull(): boolean {
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
+        if (!(this.nums[i][j] > 0)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }

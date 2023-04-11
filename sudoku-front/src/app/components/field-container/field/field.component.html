@@ -1,9 +1,9 @@
 <p>field works!</p>
 <div class="cell-container">
   <div class="row"
-       *ngFor="let i of [0, 1, 2]">
+       *ngFor="let i of getSize()">
     <div class="cell-group"
-         *ngFor="let j of [0, 1, 2]">
+         *ngFor="let j of getSize()">
       <app-cell-group [row]="i" [col]="j"></app-cell-group>
     </div>
   </div>

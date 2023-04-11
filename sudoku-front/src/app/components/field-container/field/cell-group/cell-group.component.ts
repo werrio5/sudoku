@@ -25,4 +25,12 @@ export class CellGroupComponent {
     let groupSize = this.game.getField()?.getGroupSize();
     return groupSize == undefined ? 0 : groupSize * this.col;
   }
+
+  public getSize(): number[] {
+    let size = this.game.getField()?.getSize();
+    if (size) {
+      return Array.from(Array(Math.sqrt(size)).keys())
+    }
+    return [];
+  }
 }

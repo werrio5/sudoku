@@ -17,6 +17,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import { InputComponent } from './components/field-container/input/input.component';
 import { DigitComponent } from './components/field-container/input/digit/digit.component';
+import { GenerationOptionsComponent } from './components/field-container/generation-options/generation-options.component';
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { DigitComponent } from './components/field-container/input/digit/digit.c
     ControlPanelComponent,
     InputComponent,
     DigitComponent,
+    GenerationOptionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { DigitComponent } from './components/field-container/input/digit/digit.c
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

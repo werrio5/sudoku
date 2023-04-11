@@ -1,8 +1,8 @@
 <div class="cell-container">
   <div class="row"
-       *ngFor="let i of [0, 1, 2]">
+       *ngFor="let i of getSize()">
     <div class="cell"
-         *ngFor="let j of [0, 1, 2]">
+         *ngFor="let j of getSize()">
       <app-cell [row]="i + getGroupRowOffset()" [col]="j + getGroupColOffset()"></app-cell>
     </div>
   </div>
