@@ -2,8 +2,8 @@
 
 todo:
 1. angular frontend
-1.1 basic game logic
-1.2 game field [50%]
+1.1 basic game logic [100%]
+1.2 game field [90%] - check size scaling, visual scaling
 1.3 some kind of game log
 1.3.1 undo
 1.4 external field sources
