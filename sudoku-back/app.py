@@ -2,10 +2,10 @@ import http
 import json
 
 from flask import Flask, Response
-
-from main.generator import generate, stub
+from main import router
 
 app = Flask(__name__)
+router.init(app)
 
 @app.route("/", methods=['GET'])
 def helloworld():
@@ -14,9 +14,6 @@ def helloworld():
       status=http.HTTPStatus.OK,
       mimetype='application/json'
    )
-
-app.add_url_rule('/generate', methods = ['GET', 'POST'], view_func = generate)
-app.add_url_rule('/stub', methods = ['GET', 'POST'], view_func = stub)
 
 if __name__ == '__main__':
     app.run()
