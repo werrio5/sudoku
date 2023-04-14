@@ -90,7 +90,6 @@ export class Field {
         }
       }
     }
-    console.debug(errors)
     return errors;
   }
 

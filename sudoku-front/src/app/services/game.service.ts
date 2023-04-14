@@ -31,7 +31,6 @@ export class GameService {
         this.field = field;
         this.state = GameState.IN_PROGRESS;
         this.startDate = Date.now();
-        console.debug(field)
         console.debug("game started")
       });
   }

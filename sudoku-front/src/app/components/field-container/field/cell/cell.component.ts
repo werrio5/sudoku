@@ -22,7 +22,6 @@ export class CellComponent {
   }
 
   public select(): void {
-    console.debug("select")
     this.game.getField()?.selectCell(this.row, this.col);
   }
 
