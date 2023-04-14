@@ -13,8 +13,10 @@ todo:
 
 2. python backend
 2.1 generators
-2.1.1 basic generator [50%] //todo: optimize
+2.1.1 basic generator [50%] //todo: optimize?
 2.1.2 https://www.ocf.berkeley.edu/~arel/sudoku/main.html
+2.1.3 https://www.codeproject.com/Articles/23206/Sudoku-Algorithm-Generates-a-Valid-Sudoku-in-0-018
+2.1.4 http://zhangroup.aporc.org/images/files/Paper_3485.pdf
 2.2 solvers
 2.3 statistic gathering
 
@@ -22,4 +24,6 @@ todo:
 3.1 statistic
 
 #notes
-train data: https://www.kaggle.com/datasets/bryanpark/sudoku
+train data: https://www.kaggle.com/datasets/bryanpark/sudoku [100%]
+precache generation
+complexity analysis
