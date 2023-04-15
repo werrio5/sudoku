@@ -14,3 +14,6 @@ df = pd.read_csv(zf.open('sudoku.csv'))
 def getTrainRecord(i):
     data = df[i: i + 1]
     return [data["quizzes"][0], data["solutions"][0]]
+
+def getTrainset():
+    return df;
